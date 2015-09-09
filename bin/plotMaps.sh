@@ -55,7 +55,8 @@ do
  #echo "scale=5;(${THISY} - ${BOTTOM})/(${TOP} - ${BOTTOM})*${IHEIGHT}"
  #echo "scale=5;(${THISX} - ${LEFT})/(${RIGHT} - ${LEFT})*${IWIDTH}"
  #echo "${THISX}/${THISY}  ${NEWX}/${NEWY}"
- GMT psimage pc.eps -J${PROJECTION} -E100 -W1/1 -C${NEWY}c/${NEWX}c -O -K >> figures/canada_images.ps 
+ IMAGEH=`find . -type f -name "*-location.rdf" -exec grep -H ${line} {} \; | head -n 1 | cut -d "-" -f 1`-thumbs.eps
+  GMT psimage ${IMAGEH} -J${PROJECTION} -E100 -W1/1 -C${NEWY}c/${NEWX}c -O -K >> figures/canada_images.ps 
 done
 #GMT psimage pc.eps -J${PROJECTION} -E300 -W10/10 -C-100/50 -O -K >> figures/canada_images.ps
 #GMT psimage pc.eps -J${PROJECTION} -E300 -W10/10 -C50/-100 -O -K >> figures/canada_images.ps
